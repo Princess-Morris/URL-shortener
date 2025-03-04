@@ -1,0 +1,79 @@
+docker exec -it postgres-db psql -U myuser -d url_shortener
+
+// table
+urls: id, original_url
+
+shortcodes: url_id, short_code 
+
+[
+    {
+        "id": 1,
+        "short_code": "b0134w",
+        "url_id": 1
+    },
+    {
+        "id": 2,
+        "short_code": "cprwkb",
+        "url_id": 2
+    },
+    {
+        "id": 3,
+        "short_code": "cw0k6k",
+        "url_id": 3
+    },
+    {
+        "id": 4,
+        "short_code": "hyec1d",
+        "url_id": 4
+    },
+    {
+        "id": 5,
+        "short_code": "rw1phe",
+        "url_id": 5
+    },
+    {
+        "id": 6,
+        "short_code": "ax71xp",
+        "url_id": 6
+    },
+    {
+        "id": 7,
+        "short_code": "jkfoak",
+        "url_id": 7
+    },
+    {
+        "id": 8,
+        "short_code": "http://localhost:3000/rsor06",
+        "url_id": 8
+    },
+    {
+        "id": 9,
+        "short_code": "http://localhost:3000/ct1fwj",
+        "url_id": 9
+    },
+    {
+        "id": 10,
+        "short_code": "http://localhost:3000/92yo3r",
+        "url_id": 10
+    },
+    {
+        "id": 11,
+        "short_code": "http://localhost:3000/4ya0fs",
+        "url_id": 11
+    },
+    {
+        "id": 12,
+        "short_code": "http://localhost:3000/papwl5",
+        "url_id": 12
+    },
+    {
+        "id": 13,
+        "short_code": "http://localhost:3000/4te8so",
+        "url_id": 13
+    },
+    {
+        "id": 14,
+        "short_code": "http://localhost:3000/vg22md",
+        "url_id": 14
+    }
+]
