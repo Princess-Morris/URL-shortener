@@ -46,7 +46,7 @@ app.post('/url/shorten', async (req, res) => {
         const shortCodeUrl = `http://localhost:3000/${shortCode}`
 
         await pool.query(
-            'INSERT INTO shortcodes (short_code, url_id) VALUES ($1, $2)', [shortCodeUrl, urlId]
+            'INSERT INTO shortcodes (short_code, url_id) VALUES ($1, $2)', [shortCode, urlId]
         )
 
     
@@ -77,27 +77,21 @@ app.get('/url/all', async(req, res) => {
 app.get('/url/:shortCode', async(req, res) => {
     try{
         const shortCode = req.params.shortCode.trim()
-        console.log(shortCode)
+        console.log("Short code received:", shortCode)
     
            const result = await pool.query(
             `SELECT original_url FROM urls
             INNER JOIN shortcodes ON urls.id = shortcodes.url_id
-            WHERE shortcodes.short_code = $1
-            ` [shortCode]
+            WHERE shortcodes.short_code = $1`, [shortCode]
            )
-        // const code = allShortCodes.find((aCode) => aCode.newCode === shortCode)
-    
-        // if (!code) {
-        //     res.status(400).json({ message: `this url: ${shortCode} can't be found in the db` })
-        // } else {
-    
-        //     res.status(200).json({ message: `you have been redirected to ${code.original}` })
-        // }
+
+           console.log("Databas result:", result.rows)
 
         if (result.rows.length === 0){
             return res.status(404).json({message: 'provide an existing short url'})
         }
 
+        // res.json({redirectTo: result.rows[0].original_url})
         res.redirect(result.rows[0].original_url)
     } catch(error){
          console.error(error)
